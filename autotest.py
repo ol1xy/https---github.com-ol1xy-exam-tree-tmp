@@ -22,34 +22,23 @@ class TestOrganisation(unittest.TestCase):
         organisation = Organisation.__init__(self, "789", "Название 3", "Адрес 3", "01234")
 
         # Получение всех свойств
-        properties = Organisation.properties
-        self.assertEqual(properties.code, "789")
-        self.assertEqual(properties.name, "Название 3")
-        self.assertEqual(properties.adress, "Адрес 3")
-        self.assertEqual(properties.postal_code, "01234")
+        self.assertEqual(organisation.code, "789")
+        self.assertEqual(organisation.name, "Название 3")
+        self.assertEqual(organisation.adress, "Адрес 3")
+        self.assertEqual(organisation.postal_code, "01234")
 
         # Обновление значений через setter
-        organisation.properties = {
-            "name": "Обновленное название",
-            "address": "Новый адрес",
-        }
+        organisation.adress(self, "Новый адрес")
 
         # Проверка обновленных значений
-        properties = organisation.properties
-        self.assertEqual(properties.code, "789")
-        self.assertEqual(properties.name, "Обновленное название")
-        self.assertEqual(properties.address, "Новый адрес")
-        self.assertEqual(properties.postal_code, "01234")
+        self.assertEqual(organisation.address, "Новый адрес")
 
         # Обновление одного свойства через setter
         organisation.code = "Новый код"
 
         # Проверка обновленного значения
-        properties = organisation.properties
-        self.assertEqual(properties.code, "Новый код")
-        self.assertEqual(properties.name, "Обновленное название")
-        self.assertEqual(properties.address, "Новый адрес")
-        self.assertEqual(properties.postal_code, "01234")
+        self.assertEqual(organisation.code, "Новый код")
+        self.assertEqual(organisation.address, "Новый адрес")
 
     def test_validation(self):
         """
@@ -81,7 +70,7 @@ class TestOrganisation(unittest.TestCase):
 
         # Ожидаемая ошибка при попытке обновить несуществующее свойство
         with self.assertRaises(KeyError):
-            organisation.properties = {"nonexistent_property": "value"}
+            organisation.nonexistent_property = "value"
 
 
 if __name__ == "__main__":

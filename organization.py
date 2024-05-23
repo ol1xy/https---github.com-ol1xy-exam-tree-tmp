@@ -61,14 +61,14 @@ class Organisation:
         self._name = new_name
 
     @property
-    def address(self):
+    def adress(self):
         """
         Геттер для атрибута "адрес".
         """
         return self._address
 
-    @address.setter
-    def address(self, new_address):
+    @adress.setter
+    def adress(self, new_address):
         """
         Сеттер для атрибута "адрес".
         """
@@ -91,15 +91,3 @@ class Organisation:
         if not isinstance(new_postal_code, str):
             raise TypeError("Почтовый индекс должен быть строкой")
         self._postal_code = new_postal_code
-
-    @property
-    def properties(self):
-        """
-        Возвращает словарь со свойствами объекта.
-        """
-        return {
-            "code": self.code,
-            "name": self.name,
-            "address": self.address,
-            "postal_code": self.postal_code,
-        }
